@@ -23,7 +23,3 @@ Framework yang digunakan:
 
 Kebutuhan:
 Website ini dibuat untuk tempat - tempat yang membutuhkan automasi sistem parkir agar lebih teratur dan tercatat.
-
-
-
-Author - Zabil Sabri Muhammad
