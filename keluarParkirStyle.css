@@ -1,0 +1,21 @@
+.struk{
+    width: 40%;
+    border: black solid;
+    padding: 15px;
+}
+
+.struk-heading{
+    text-align: center;
+}
+
+.layarDepan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+}
+
+.inputKode{
+    padding: 14px 16px;
+}
