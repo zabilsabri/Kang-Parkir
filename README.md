@@ -10,7 +10,7 @@ Fitur Website:
 1. Dapat menentukan kendaraan yang masuk. (mobil/motor)
 2. Auto generate kode masuk secara random
 3. Mencatat waktu masuk setiap kendaraan
-4. Menampilkan total bayaran parkir sesuai dengan lamanya di dalam parkiran
+4. Menampilkan total bayaran parkir sesuai dengan lamanya di dalam parkiran dan jenis kendaraan
 
 Bahasa yang digunakan:
 1. SQL (database)
