@@ -18,9 +18,16 @@
         <h1>SELAMAT DATANG!</h1>
         <h3>Silahkan Pilih Kendaraan Anda</h3>
         <div class="button">
-            <a class="btn btn-primary" href="masukParkirMobilBE.php" role="button"><img src="picture/mobil.png" height="150px" width="250px" alt="mobil"></a>
-            <a class="btn btn-primary" href="masukParkirMotorBE.php" role="button"><img src="picture/motor.png" height="150px" width="250px" alt="motor"></a>
+            <a href="masukParkirMobilBE.php"><img src="picture/mobil.png" style="border: black solid;" height="150px" width="250px" alt="mobil"></a>
+            <a href="masukParkirMotorBE.php"><img src="picture/motor.png" style="border: black solid;" height="150px" width="250px" alt="motor"></a>
         </div>
     </div>
+
+    <div class="alertBox">
+        <?php if(isset($_GET['full'])){ ?>
+        <b>Maaf Parkiran Untuk Kendaraan Anda Sudah Penuh</b>
+        <?php } ?>
+    </div>
+
 </body>
 </html>

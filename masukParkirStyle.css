@@ -5,3 +5,8 @@
     flex-direction: column;
     height: 530px;
 }
+
+.alertBox{
+    text-align: center;
+    background-color: #f5939d;
+}

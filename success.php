@@ -4,7 +4,9 @@ session_start();
 include 'connection.php';
 
 $id_masuk = $_SESSION['id_masuk'];
+
 $query = mysqli_query($conn, "SELECT * FROM masuk WHERE id_masuk = $id_masuk");
+
 $ambil = mysqli_fetch_array($query);
 
 ?>
@@ -21,9 +23,9 @@ $ambil = mysqli_fetch_array($query);
 <body>
     <div class="layarDepan">
         <h1>Selamat Datang!</h1>
-        <p><b>1. Kode Masuk: </b> <?php echo $ambil['id_masuk']; ?> </p>
-        <p><b>2. Waktu Masuk: </b> <?php echo $ambil['waktu_masuk'] ?> </p>
-        <p><b>3. Kendaraan: </b> <?php echo $ambil['kendaraan']; ?> </p>
+        <p><b>Kode Masuk: </b> <?php echo $ambil['id_masuk']; ?> </p>
+        <p><b>Waktu Masuk: </b> <?php echo $ambil['waktu_masuk'] ?> </p>
+        <p><b>Kendaraan: </b> <?php echo $ambil['kendaraan']; ?> </p>
     </div>
 </body>
 </html>
