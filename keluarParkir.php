@@ -1,55 +1,3 @@
-<?php
-session_start();
-
-include 'connection.php';
-
-# Fungsi: Menghitung biaya parkiran customer berdasarkan berapa lama di dalam parkiran
-if(isset($_POST['submit2'])){
-    $kode = $_POST['kode'];
-
-    $_SESSION['kodeKeluar'] = $kode;
-
-    $query = mysqli_query($conn, "select * from masuk where id_masuk = $kode");
-
-    $ambil = mysqli_fetch_assoc($query);
-
-    $waktu_masuk_string = $ambil['waktu_masuk'];
-    
-    date_default_timezone_set("Asia/Makassar");
-
-    $today_date_string = date('Y/m/d H:i:s');
-    
-    $waktu_masuk_time = strtotime($waktu_masuk_string);
-    $today_date_time = strtotime($today_date_string);
-
-    $diff = abs($waktu_masuk_time - $today_date_time);
-
-    $years = round($diff / (365*60*60*24));
-    $months = round(($diff - $years * 365*60*60*24) / (30*60*60*24));
-    $days = round(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-    $hours = round(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24)/ (60*60));
-
-    if($ambil['kendaraan'] == "motor"){
-        $total = (($years * 8760) + ($months * 730) + ($days * 24) + $hours) * 3000;
-    } else {
-        $total = (($years * 8760) + ($months * 730) + ($days * 24) + $hours) * 5000;
-    }
-}
-
-# Fungsi: Menghapus data jika customer sudah keluar dari parkiran
-if(isset($_POST['deleteData'])){
-
-    $kode = $_SESSION['kodeKeluar'];
-
-    $deleteData = mysqli_query($conn, "delete from masuk where id_masuk = $kode");
-    header('location: keluarParkir.php');
-}
-
-error_reporting(E_ERROR | E_PARSE);
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,3 +54,55 @@ error_reporting(E_ERROR | E_PARSE);
 </div>
 </body>
 </html>
+
+
+<?php
+session_start();
+
+include 'connection.php';
+
+# Fungsi: Menghitung biaya parkiran customer berdasarkan berapa lama di dalam parkiran
+if(isset($_POST['submit2'])){
+    $kode = $_POST['kode'];
+
+    $_SESSION['kodeKeluar'] = $kode;
+
+    $query = mysqli_query($conn, "select * from masuk where id_masuk = $kode");
+
+    $ambil = mysqli_fetch_assoc($query);
+
+    $waktu_masuk_string = $ambil['waktu_masuk'];
+    
+    date_default_timezone_set("Asia/Makassar");
+
+    $today_date_string = date('Y/m/d H:i:s');
+    
+    $waktu_masuk_time = strtotime($waktu_masuk_string);
+    $today_date_time = strtotime($today_date_string);
+
+    $diff = abs($waktu_masuk_time - $today_date_time);
+
+    $years = round($diff / (365*60*60*24));
+    $months = round(($diff - $years * 365*60*60*24) / (30*60*60*24));
+    $days = round(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+    $hours = round(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24)/ (60*60));
+
+    if($ambil['kendaraan'] == "motor"){
+        $total = (($years * 8760) + ($months * 730) + ($days * 24) + $hours) * 3000;
+    } else {
+        $total = (($years * 8760) + ($months * 730) + ($days * 24) + $hours) * 5000;
+    }
+}
+
+# Fungsi: Menghapus data jika customer sudah keluar dari parkiran
+if(isset($_POST['deleteData'])){
+
+    $kode = $_SESSION['kodeKeluar'];
+
+    $deleteData = mysqli_query($conn, "delete from masuk where id_masuk = $kode");
+    header('location: keluarParkir.php');
+}
+
+error_reporting(E_ERROR | E_PARSE);
+
+?>
